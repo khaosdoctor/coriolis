@@ -39,13 +39,17 @@ const GRPCAT = {
   'ml': 'lasers',
   'c': 'projectiles',
   'mc': 'projectiles',
+  'advmc': 'projectiles',
   'axmc': 'experimental',
+  'axmce': 'experimental',
+  'ntp': 'experimental',
   'fc': 'projectiles',
   'rfl': 'experimental',
   'pa': 'projectiles',
   'rg': 'projectiles',
   'mr': 'ordnance',
   'axmr': 'experimental',
+  'axmre': 'experimental',
   'rcpl': 'experimental',
   'dtl': 'experimental',
   'tbsc': 'experimental',
@@ -104,7 +108,7 @@ const CATEGORIES = {
 
   // Hardpoints
   'lasers': ['pl', 'ul', 'bl'],
-  'projectiles': ['mc', 'c', 'fc', 'pa', 'rg'],
+  'projectiles': ['mc', 'advmc', 'c', 'fc', 'pa', 'rg'],
   'ordnance': ['mr', 'tp', 'nl'],
   // Utilities
   'sb': ['sb'],
@@ -113,7 +117,7 @@ const CATEGORIES = {
   'defence': ['ch', 'po', 'ec'],
   'scanners': ['sc', 'ss', 'cs', 'kw', 'ws'], // Overloaded with internal scanners
   // Experimental
-  'experimental': ['axmc', 'axmr', 'rfl', 'tbrfl', 'tbsc', 'tbem', 'xs', 'sfn', 'rcpl', 'dtl', 'rsl', 'mahr',],
+  'experimental': ['axmc', 'axmce', 'axmr', 'axmre', 'ntp','rfl', 'tbrfl', 'tbsc', 'tbem', 'xs', 'sfn', 'rcpl', 'dtl', 'rsl', 'mahr',],
   'weapon stabilizers': ['ews'],
   // Guardian
   'guardian': ['gpp', 'gpd', 'gpc', 'ggc', 'gsrp', 'gfsb', 'ghrp', 'gmrp', 'gsc'],

@@ -16,11 +16,13 @@ jobs:
     steps:
       - shell: bash
         run: |
+          rm -Rf ./coriolis-data
           git clone https://github.com/alex-williams/coriolis-data.git
           cd coriolis-data
           git checkout alpha
           npm install
           cd ../
+          rm -Rf ./coriolis
           git clone https://github.com/alex-williams/coriolis.git
           cd ./coriolis
           git checkout alpha

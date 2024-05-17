@@ -93,6 +93,7 @@ export default class StandardSlot extends TranslatedComponent {
       this._modificationsSelected = false;
     }
 
+    // If this is a missing module, therefore has the 'info' field, set the warning value on the module to be true when loaded.
     if (m.info) {
       warning = () => true;
     }

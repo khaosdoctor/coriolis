@@ -323,15 +323,6 @@ export function isShieldGenerator(g) {
 }
 
 /**
- * Determine if a module group is a missing module
- * @param  {String}  info Module Group name
- * @return {Boolean}   True if the group is a missing module
- */
-export function isMissingModule(info) {
-  return info == 'Not in Coriolis yet. Check GitHub issues. Add Issue if needed.';
-}
-
-/**
  * Creates a new ModuleSet that contains all available modules
  * that the specified ship is eligible to use.
  *

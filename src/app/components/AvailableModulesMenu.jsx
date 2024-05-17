@@ -312,7 +312,7 @@ export default class AvailableModulesMenu extends TranslatedComponent {
     let itemsOnThisRow = 0;
     for (let i = 0; i < sortedModules.length; i++) {
       let m = sortedModules[i];
-      if (ModuleUtils.isMissingModule(m.info)) {
+      if (m.grp == 'mh' || m.grp == 'mm') {
         // If this is a missing module, skip it
         continue;
       }

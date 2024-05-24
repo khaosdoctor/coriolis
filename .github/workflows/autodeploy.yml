@@ -18,13 +18,11 @@ jobs:
         run: |
           rm -Rf ./coriolis
           rm -Rf ./coriolis-data
-          git clone https://github.com/alex-williams/coriolis.git
-          git clone https://github.com/alex-williams/coriolis-data.git
+          git clone https://github.com/alex-williams/coriolis.git --single-branch --branch alpha
+          git clone https://github.com/alex-williams/coriolis-data.git --single-branch --branch alpha
           cd coriolis-data
-          git checkout alpha
           npm install
           cd ../coriolis
-          git checkout alpha
           npm install
           npm run build
           sudo -u www-data cp -r ./build/* /var/www/newdisk/coriolis.brighter-applications.co.uk/

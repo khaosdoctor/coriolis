@@ -217,16 +217,30 @@ export default class AvailableModulesMenu extends TranslatedComponent {
               if (categories.length === 1) {
                 // Show category header instead of group header
                 if (m && grp == m.grp) {
-                  list.push(<div ref={(elem) => this.groupElem = elem} key={category}
+                  // If this is a missing module/weapon, skip it
+                  if (m.grp == "mh" || m.grp == "mm"){
+                    continue;
+                  } else {
+                    list.push(<div ref={(elem) => this.groupElem = elem} key={category}
                                  className={'select-category upp'}>{translate(category)}</div>);
+                  }
                 } else {
-                  list.push(<div key={category} className={'select-category upp'}>{translate(category)}</div>);
+                  if (category == "mh"){
+                    continue;
+                  } else {
+                    list.push(<div key={category} className={'select-category upp'}>{translate(category)}</div>);
+                  }
                 }
               } else {
                 // Show category header as well as group header
                 if (!categoryHeader) {
-                  list.push(<div key={category} className={'select-category upp'}>{translate(category)}</div>);
-                  categoryHeader = true;
+                  if (category == "mh"){
+                    continue;
+                  }
+                  else {
+                    list.push(<div key={category} className={'select-category upp'}>{translate(category)}</div>);
+                    categoryHeader = true;
+                  }
                 }
                 if (m && grp == m.grp) {
                   list.push(<div ref={(elem) => this.groupElem = elem} key={grp}
@@ -302,6 +316,10 @@ export default class AvailableModulesMenu extends TranslatedComponent {
     let itemsOnThisRow = 0;
     for (let i = 0; i < sortedModules.length; i++) {
       let m = sortedModules[i];
+      if (m.grp == 'mh' || m.grp == 'mm') {
+        // If this is a missing module, skip it
+        continue;
+      }
       let mount = null;
       let disabled = false;
       prevName = m.name;
@@ -316,6 +334,7 @@ export default class AvailableModulesMenu extends TranslatedComponent {
         disabled = 1 <= ship.internal.filter(o => o.m && o.m.grp === 'mlc').length;
       }
       let active = mountedModule && mountedModule.id === m.id;
+      
       let classes = cn(m.name ? 'lc' : 'c', {
         warning: !disabled && warningFunc && warningFunc(m),
         active,

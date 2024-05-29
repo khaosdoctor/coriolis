@@ -205,7 +205,6 @@ export default class ModalShoppingList extends TranslatedComponent {
           else {
             item = module.m.symbol;
           }
-          console.log(module.m)
 
           blueprints.push({
             "item": item,

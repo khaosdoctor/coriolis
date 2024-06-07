@@ -248,8 +248,6 @@ export default class ModalShoppingList extends TranslatedComponent {
     }
 
     let JSONString = JSON.stringify(baseJson)
-    console.log(JSONString)
-    console.log(ship)
     let deflated = zlib.deflateSync(JSONString)
 
     //actually encode
@@ -285,13 +283,11 @@ export default class ModalShoppingList extends TranslatedComponent {
             if (!module.m.blueprint.grades[g].components.hasOwnProperty(i)) {
               continue;
             }
-            console.log("Grade: " + g + " Component: " + i + " Amount: " + module.m.blueprint.grades[g].components[i] + " Rolls: " + this.state.matsPerGrade[g])
             if (mats[i]) {
               mats[i] += module.m.blueprint.grades[g].components[i] * this.state.matsPerGrade[g];
             } else {
               mats[i] = module.m.blueprint.grades[g].components[i] * this.state.matsPerGrade[g];
             }
-            console.log(mats[i])
           }
         }
         if (module.m.blueprint.special) {

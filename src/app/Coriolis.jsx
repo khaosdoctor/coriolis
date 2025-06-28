@@ -69,7 +69,7 @@ export default class Coriolis extends React.Component {
       noTouch: !('ontouchstart' in window || navigator.msMaxTouchPoints || navigator.maxTouchPoints),
       page: null,
       // Announcements must have an expiry date in format "YYYY-MM-DDTHH:MM:SSZ"
-      announcements: [{expiry: "2024-11-30T00:00:00Z", text: "Mandalay added"}, {expiry: "2024-12-06T00:00:00Z", text: "Concord Cannon added"}, {expiry: "2024-12-08T00:00:00Z", text: "Boost Interval Feature added"}],
+      announcements: [{expiry: "2025-04-10T00:00:00Z", text: "Corsair added"}],
       language: getLanguage(Persist.getLangCode()),
       route: {},
       sizeRatio: Persist.getSizeRatio()
@@ -123,7 +123,15 @@ export default class Coriolis extends React.Component {
         this._showModal(<ModalImport importString={data}/>);
       }
     } catch (err) {
-      this._onError('Failed to import ship', r.path, 0, 0, err);
+      const fullUrl = window.location.href;
+
+      if (fullUrl.length >= 2083) {
+        err = 'URL Length = ' + fullUrl.length;
+        this._onError('Failed to import ship - Potential URL Length issue', r.path, 0, 0, err);
+      }
+      else {
+        this._onError('Failed to import ship - Unknown Reason', r.path, 0, 0, err);
+      }
     }
   }
 

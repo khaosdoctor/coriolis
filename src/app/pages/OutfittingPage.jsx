@@ -558,6 +558,7 @@ export default class OutfittingPage extends Page {
     let { buildName, ship } = this.state;
     this.context.showModal(
       <ModalExport
+        ship={ship}
         title={(buildName || ship.name) + ' ' + translate('export')}
         description={translate('PHRASE_EXPORT_DESC')}
         data={toDetailedBuild(buildName, ship, ship.toString())}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TranslatedComponent from './TranslatedComponent';
+import { Copy } from './SvgIcons';
+import { toSLEF } from '../utils/SLEF';
 
 /**
  * Export Modal
@@ -20,16 +22,17 @@ export default class ModalExport extends TranslatedComponent {
   constructor(props) {
     super(props);
     let exportJson;
+    let exportSLEF = !props.generator && JSON.stringify(toSLEF(this.props.data))
 
     if (props.generator) {
       exportJson = 'Generating...';
-    } else if(typeof props.data == 'string') {
+    } else if (typeof props.data == 'string') {
       exportJson = props.data;
     } else {
       exportJson = JSON.stringify(this.props.data, null, 2);
     }
 
-    this.state = { exportJson };
+    this.state = { exportJson, exportSLEF };
   }
 
   /**
@@ -51,6 +54,10 @@ export default class ModalExport extends TranslatedComponent {
     }
   }
 
+  _copySLEF () {
+    navigator.clipboard.writeText(this.state.exportSLEF)
+  }
+
   /**
    * Render the modal
    * @return {React.Component} Modal Content
@@ -62,12 +69,27 @@ export default class ModalExport extends TranslatedComponent {
     if (this.props.description) {
       description = <div>{translate(this.props.description)}</div>;
     }
+    console.log({ description, props: this.props, context: this.context })
 
-    return <div className='modal' onClick={ (e) => e.stopPropagation() }>
+    return <div className='modal' onClick={(e) => e.stopPropagation()}>
       <h2>{translate(this.props.title || 'Export')}</h2>
       {description}
       <div>
-        <textarea className='cb json' ref={node => this.exportField = node} readOnly value={this.state.exportJson} />
+        <textarea className='cb json' onClick={(e) => e.target.select()} ref={node => this.exportField = node} readOnly value={this.state.exportJson} />
+        <label style={{ margin: 0 }}>SLEF:</label>
+        <div className='slefbox' name="slefbox">
+          <input className='cb json' onClick={(e) => e.target.select()} type='text' readOnly value={this.state.exportSLEF} />
+          {navigator.clipboard &&
+          <button
+            style={{width: '16px'}}
+            onClick={this._copySLEF.bind(this)}
+            onMouseEnter={this.context.termtip.bind(null, translate('copy') + ' SLEF')}
+            onMouseLeave={this.context.tooltip.bind(null, null)}
+          >
+            <Copy className="icon lg" />
+          </button>
+          }
+        </div>
       </div>
       <button className='r dismiss cap' onClick={this.context.hideModal}>{translate('close')}</button>
     </div>;

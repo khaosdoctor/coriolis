@@ -15,6 +15,7 @@ export const CORE_INTERNAL_NAME_MAPPING = {
   fdToCoriolis: {
     PowerPlant: "powerPlant",
     MainEngines: "thrusters",
+    Thrusters: "thrusters",
     FrameShiftDrive: "frameShiftDrive",
     LifeSupport: "lifeSupport",
     Radar: "sensors",
@@ -33,13 +34,18 @@ export const CORE_INTERNAL_NAME_MAPPING = {
     powerDistributor: "PowerDistributor",
     bulkheads: "Armour",
     cargoHatch: "CargoHatch",
+    Sensors: "Radar",
+    FSD: "FrameShiftDrive",
+    Thrusters: "MainEngines",
   },
   // The FD name is different in the "item" key of the loadout object
   // but just for some modules
   fdToItemName: {
     PowerPlant: "powerplant",
     MainEngines: "engine",
+    Thrusters: "engine",
     FrameShiftDrive: "hyperdrive",
+    FSD: "hyperdrive",
     LifeSupport: "lifeSupport",
     Radar: "sensors",
     FuelTank: "fueltank",
@@ -56,10 +62,10 @@ export const CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING = BulkheadNames.reduce(
         acc[cur] = "armour_mirrored";
         break;
       case "Reactive Surface Composite":
-        acc[cur] = "_armour_reactive";
+        acc[cur] = "armour_reactive";
         break;
       default:
-        acc[cur] = `_armour_grade${index + 1}`;
+        acc[cur] = `armour_grade${index + 1}`;
         break;
     }
     return acc;
@@ -116,13 +122,12 @@ export const SHIP_FD_NAME_TO_CORIOLIS_NAME = {
 
 // Mapping from hardpoint class to name in companion API
 export const HARDPOINT_NUM_TO_CLASS = {
-  0: 'Tiny',
-  1: 'Small',
-  2: 'Medium',
-  3: 'Large',
-  4: 'Huge'
+  0: "Tiny",
+  1: "Small",
+  2: "Medium",
+  3: "Large",
+  4: "Huge",
 };
-
 
 /**
  * Obtain a module given its ED ID
@@ -178,7 +183,11 @@ function _moduleFromEdId(edId) {
  * @return {string} the Coriolis model of the ship
  */
 function _shipModelFromEDName(edName) {
-  return SHIP_FD_NAME_TO_CORIOLIS_NAME[Object.keys(SHIP_FD_NAME_TO_CORIOLIS_NAME).find(elem => elem.toLowerCase() === edName.toLowerCase())];
+  return SHIP_FD_NAME_TO_CORIOLIS_NAME[
+    Object.keys(SHIP_FD_NAME_TO_CORIOLIS_NAME).find(
+      (elem) => elem.toLowerCase() === edName.toLowerCase(),
+    )
+  ];
 }
 
 /**

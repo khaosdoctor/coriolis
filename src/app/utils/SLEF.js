@@ -1,3 +1,12 @@
+import {
+  HardpointSizeToString,
+  RatingToNumber,
+} from "../shipyard/Constants.js";
+import {
+  CORE_INTERNAL_NAME_MAPPING,
+  CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING,
+} from "./CompanionApiUtils.js";
+
 /**
  * @typedef {Object} InternalDataReferences References for internal data, extra information
  * @property {string} name Website name
@@ -96,13 +105,6 @@
  * @property {RatedComponent} sensors
  * @property {RatedComponent} fuelTank
  */
-
-import { RatingToNumber } from "../shipyard/Constants.js";
-import {
-  CORE_INTERNAL_NAME_MAPPING,
-  CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING,
-} from "./CompanionApiUtils.js";
-
 /**
  * @typedef {1|2|3|4|5} PowerPriority
  */
@@ -218,30 +220,53 @@ import {
 
 /**
  * Converts the internal Coriolis representation to SLEF
- * @param {InternalData} internalData Coriolis internal data
+ * @param {typeof import('../shipyard/Ship.js')} ship Ship class
+ * @param {InternalData} internalData Internal JSON data
  */
-export function toSLEF(internalData) {
-  console.log(`toSLEF`, { internalData });
+export function toSLEF(ship, internalData) {
+  console.log(`toSLEF`, { internalData, ship });
+  const dataReference = internalData.references[0];
 
   const slef = [
     {
-      header: createSLEFHeader(internalData),
+      header: {
+        appName: dataReference.name ?? "Coriolis.io",
+        appVersion: "1.0",
+        appURL: dataReference.url ?? "",
+        appCustomProperties: {
+          ...dataReference,
+          shipName: internalData.name,
+        },
+      },
       data: {
-        Ship: internalData.references[0].shipId,
+        Ship: ship.id,
+        HullValue: ship.m.discountedCost,
+        ModulesValue: ship.totalCost,
+        UnladenMass: ship.unladenMass,
+        CargoCapacity: ship.cargoCapacity,
+        FuelCapacity: {
+          Main: ship.fuelCapacity,
+          Reserve: ship.reserveFuelCapacity,
+        },
         Modules: [
-          ...internalData.components.hardpoints
-            .filter(Boolean)
-            .map(internalHardpointToSLEF),
-          ...internalData.components.internal
-            .filter(Boolean)
-            .map(internalOptionalInternalToSLEF),
-          ...internalData.components.utility
-            .filter(Boolean)
-            .map(internalUtilityMountToSLEF),
-          ...internalCoreInternalToSLEF(
-            internalData.components.standard,
-            internalData,
-          ),
+          {
+            Slot: CORE_INTERNAL_NAME_MAPPING.coriolisToFD.cargoHatch,
+            On: true,
+            Item: CORE_INTERNAL_NAME_MAPPING.fdToItemName.CargoHatch,
+            Priority: 0,
+            Value: 0,
+          },
+          {
+            Slot: CORE_INTERNAL_NAME_MAPPING.coriolisToFD.bulkheads,
+            On: true,
+            Item: `${ship.id}_${CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING[ship.bulkheads.m.name]}`,
+            Priority: 0,
+            Value: ship.bulkheads.discountedCost,
+            Engineering: engineeringFromBlueprint(ship.bulkheads.m.blueprint),
+          },
+          ...ship.standard.map(coreInternalToSLEF),
+          ...ship.hardpoints.reduce(hardpointsToSLEF, []),
+          ...ship.internal.map(optionalInternalToSLEF),
         ],
       },
     },
@@ -251,68 +276,63 @@ export function toSLEF(internalData) {
 }
 
 /**
- * Uses the internal data to create a SLEF header
- * @param internalData {InternalData} the internal JSON representation of the loadout
- */
-function createSLEFHeader(internalData) {
-  return {
-    appName: internalData.references[0].name ?? "Coriolis.io",
-    appVersion: "1.0",
-    appURL: internalData.references[0].url ?? "",
-    appCustomProperties: {
-      ...internalData.references[0],
-      shipName: internalData.name,
-    },
-  };
-}
-
-/**
  * Converts an internal representation of one hardpoint to SLEF
  * @param {HardpointComponent} hardpoint Single hardpoint
  */
-function internalHardpointToSLEF(hardpoint) {}
+function hardpointsToSLEF(acc, hardpoint, index, arr) {
+  if (!hardpoint.m) return acc;
+
+  const Slot = `${HardpointSizeToString[hardpoint.maxClass]}Hardpoint${hardpoint.slotIndex}`;
+  acc.push({
+    Slot,
+    On: Boolean(hardpoint.enabled),
+    Item: hardpoint.m.symbol,
+    Priority: hardpoint.priority,
+    Value: hardpoint.discountedCost,
+    Engineering: engineeringFromBlueprint(hardpoint.m.blueprint),
+  });
+  return acc;
+}
 
 /**
  * Converts an internal representation of one core internal to SLEF
- * @param {StandardComponents} coreInternal Core internals
- * @param {EDShipName} fdShipId FD ship name, used for the buklheads
+ * @param {} coreInternal Core internals
  */
-function internalCoreInternalToSLEF(coreInternal, internalData) {
-  return Object.entries(coreInternal).map(([key, value]) => {
-    const fdName = CORE_INTERNAL_NAME_MAPPING.coriolisToFD[key];
-    // in general most core internals follow this template
-    let fdItemName = `int_${CORE_INTERNAL_NAME_MAPPING.fdToItemName[fdName]}_size${value.class}_class${RatingToNumber.indexOf(value.rating)}`;
+function coreInternalToSLEF(coreInternal) {
+  let slot =
+    CORE_INTERNAL_NAME_MAPPING.coriolisToFD[coreInternal.m.ukName] ??
+    coreInternal.m.ukName.replace(" ", "");
 
-    // but some don't
-    switch (fdName) {
-      // cargo hatches are always mapped as modularcargobaydoor
-      case CORE_INTERNAL_NAME_MAPPING.coriolisToFD.cargoHatch:
-        fdItemName = CORE_INTERNAL_NAME_MAPPING.fdToItemName.CargoHatch;
-        break;
-      // bulkheads are mapped as <shipId>_armour_<grade> only for Lightweight, Reinforced and Military
-      // for reactive and mirrored they're just mapped as <shipId>_armour_<reactive|mirrored>
-      case CORE_INTERNAL_NAME_MAPPING.coriolisToFD.bulkheads:
-        fdItemName = `${internalData.references[0].shipId}${CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING[value]}`;
-        break;
-    }
-
-    return {
-      Slot: fdName,
-      On: value.enabled,
-      priority: value.priority,
-      Item: fdItemName,
-    };
-  });
+  return {
+    Slot: slot,
+    On: Boolean(coreInternal.enabled),
+    Item: coreInternal.m.symbol,
+    Priority: coreInternal.priority,
+    Value: coreInternal.discountedCost,
+    Engineering: engineeringFromBlueprint(coreInternal.m.blueprint),
+  };
 }
 
 /**
  * Converts an internal representation of one optional internal to SLEF
  * @param {InternalComponent} optionalInternal Optional internal component
  */
-function internalOptionalInternalToSLEF(optionalInternal) {}
+function optionalInternalToSLEF(optionalInternal) {}
 
 /**
  * Converts an internal representation of one utility mount to SLEF
  * @param {UtilityComponent} utilityMount Utility internal component
  */
 function internalUtilityMountToSLEF(utilityMount) {}
+
+function engineeringFromBlueprint(blueprint) {
+  if (!blueprint) return {};
+  return {
+    BlueprintName: blueprint.fdname,
+    Level: blueprint.grade,
+    Quality: 1,
+    ...(blueprint?.special?.edname
+      ? { ExperimentalEffect: blueprint.special.edname }
+      : {}),
+  };
+}

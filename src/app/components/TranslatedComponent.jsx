@@ -43,8 +43,8 @@ export default class TranslatedComponent extends React.Component {
    * determine change.
    *
    * @param  {object} nextProps   Next/Incoming Properties
-   * @param  {objec} nextState    Next/Incoming State
-   * @param  {objec} nextContext  Next/Incoming Context
+   * @param  {object} nextState    Next/Incoming State
+   * @param  {object} nextContext  Next/Incoming Context
    * @return {boolean}            True if props, state, or context has changed
    */
   shouldComponentUpdate(nextProps, nextState, nextContext) {

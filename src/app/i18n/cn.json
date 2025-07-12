@@ -80,6 +80,7 @@
   "TT_SUMMARY_LADEN_TOTAL_JUMP": "满燃料满载的时候，每次跳跃最长距离时的总计跳跃距离",
   "HELP_MODIFICATIONS_MENU": "单机一个数字以输入新的数值，或者左右拖动以进行微调",
 
+  "copy": "复制",
   "core internal": "核心部件",
   "hardpoints": "武器挂点",
   "optional internal": "可选部件",

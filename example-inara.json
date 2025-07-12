@@ -1,0 +1,288 @@
+[
+    {
+        "header": {
+            "appName": "Inara",
+            "appVersion": "1.0",
+            "appURL": "https:\/\/inara.cz\/elite\/cmdr-fleet-ship\/12320\/5673752\/",
+            "appCustomProperties": {
+                "inaraCommanderID": 12320,
+                "inaraShipID": 5673752
+            }
+        },
+        "data": {
+            "Ship": "krait_mkii",
+            "ShipID": 16,
+            "ShipName": "nuclear carriage",
+            "ShipIdent": "b00m",
+            "HullValue": 38743029,
+            "ModulesValue": 90055332,
+            "Rebuy": 6439920,
+            "Modules": [
+                {
+                    "Slot": "largehardpoint1",
+                    "Item": "hpt_multicannon_gimbal_large",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 507579,
+                    "Engineering": {
+                        "BlueprintName": "weapon_highcapacity",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_corrosive_shell"
+                    }
+                },
+                {
+                    "Slot": "largehardpoint2",
+                    "Item": "hpt_multicannon_gimbal_large",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 507579,
+                    "Engineering": {
+                        "BlueprintName": "weapon_overcharged",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_incendiary_rounds"
+                    }
+                },
+                {
+                    "Slot": "largehardpoint3",
+                    "Item": "hpt_multicannon_gimbal_large",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 507579,
+                    "Engineering": {
+                        "BlueprintName": "weapon_overcharged",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_weapon_damage"
+                    }
+                },
+                {
+                    "Slot": "mediumhardpoint1",
+                    "Item": "hpt_pulselaser_gimbal_medium",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 34515,
+                    "Engineering": {
+                        "BlueprintName": "weapon_longrange",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_thermalshock"
+                    }
+                },
+                {
+                    "Slot": "mediumhardpoint2",
+                    "Item": "hpt_pulselaser_gimbal_medium",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 34515,
+                    "Engineering": {
+                        "BlueprintName": "weapon_longrange",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_phasing_sequence"
+                    }
+                },
+                {
+                    "Slot": "tinyhardpoint1",
+                    "Item": "hpt_heatsinklauncher_turret_tiny",
+                    "On": true,
+                    "Priority": 3,
+                    "Value": 3072
+                },
+                {
+                    "Slot": "tinyhardpoint2",
+                    "Item": "hpt_cloudscanner_size0_class2",
+                    "On": true,
+                    "Priority": 4,
+                    "Value": 35656,
+                    "Engineering": {
+                        "BlueprintName": "sensor_longrange",
+                        "Level": 4,
+                        "Quality": 1
+                    }
+                },
+                {
+                    "Slot": "tinyhardpoint3",
+                    "Item": "hpt_crimescanner_size0_class2",
+                    "On": true,
+                    "Priority": 4,
+                    "Value": 35656,
+                    "Engineering": {
+                        "BlueprintName": "sensor_fastscan",
+                        "Level": 5,
+                        "Quality": 1
+                    }
+                },
+                {
+                    "Slot": "tinyhardpoint4",
+                    "Item": "hpt_plasmapointdefence_turret_tiny",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 16275
+                },
+                {
+                    "Slot": "slot01_size6",
+                    "Item": "int_shieldgenerator_size6_class3_fast",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 2366258,
+                    "Engineering": {
+                        "BlueprintName": "shieldgenerator_thermic",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_shield_regenerative"
+                    }
+                },
+                {
+                    "Slot": "slot02_size6",
+                    "Item": "int_shieldcellbank_size6_class5",
+                    "On": true,
+                    "Priority": 3,
+                    "Value": 3049917
+                },
+                {
+                    "Slot": "slot03_size5",
+                    "Item": "int_guardianfsdbooster_size5",
+                    "On": true,
+                    "Priority": 2,
+                    "Value": 5688921
+                },
+                {
+                    "Slot": "slot04_size5",
+                    "Item": "int_cargorack_size5_class1",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 108777
+                },
+                {
+                    "Slot": "slot05_size4",
+                    "Item": "int_shieldcellbank_size4_class5",
+                    "On": true,
+                    "Priority": 3,
+                    "Value": 389022
+                },
+                {
+                    "Slot": "slot06_size3",
+                    "Item": "int_multidronecontrol_operations_size3_class4",
+                    "On": true,
+                    "Priority": 4,
+                    "Value": 70200
+                },
+                {
+                    "Slot": "slot07_size3",
+                    "Item": "int_hullreinforcement_size3_class2",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 73710,
+                    "Engineering": {
+                        "BlueprintName": "hullreinforcement_heavyduty",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_hullreinforcement_chunky"
+                    }
+                },
+                {
+                    "Slot": "slot08_size2",
+                    "Item": "int_modulereinforcement_size2_class2",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 35100
+                },
+                {
+                    "Slot": "slot09_size1",
+                    "Item": "int_dockingcomputer_advanced",
+                    "On": true,
+                    "Priority": 4,
+                    "Value": 11854
+                },
+                {
+                    "Slot": "powerplant",
+                    "Item": "int_powerplant_size6_class5",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 11382139,
+                    "Engineering": {
+                        "BlueprintName": "powerplant_armoured",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_powerplant_highcharge"
+                    }
+                },
+                {
+                    "Slot": "mainengines",
+                    "Item": "int_engine_size6_class5",
+                    "On": false,
+                    "Value": 14197539,
+                    "Engineering": {
+                        "BlueprintName": "engine_dirty",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_engine_overloaded"
+                    }
+                },
+                {
+                    "Slot": "frameshiftdrive",
+                    "Item": "int_hyperdrive_overcharge_size5_class5",
+                    "On": true,
+                    "Value": 5971625,
+                    "Engineering": {
+                        "BlueprintName": "fsd_longrange",
+                        "Level": 5,
+                        "Quality": 0.6
+                    }
+                },
+                {
+                    "Slot": "lifesupport",
+                    "Item": "int_lifesupport_size4_class2",
+                    "On": true,
+                    "Value": 24898
+                },
+                {
+                    "Slot": "powerdistributor",
+                    "Item": "int_powerdistributor_size7_class5",
+                    "On": true,
+                    "Value": 8539765,
+                    "Engineering": {
+                        "BlueprintName": "powerdistributor_highfrequency",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_powerdistributor_fast"
+                    }
+                },
+                {
+                    "Slot": "radar",
+                    "Item": "int_sensors_size6_class2",
+                    "On": true,
+                    "Priority": 4,
+                    "Value": 195195,
+                    "Engineering": {
+                        "BlueprintName": "sensor_longrange",
+                        "Level": 5,
+                        "Quality": 1
+                    }
+                },
+                {
+                    "Slot": "fueltank",
+                    "Item": "int_fueltank_size5_class3",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 85779
+                },
+                {
+                    "Slot": "armour",
+                    "Item": "krait_mkii_armour_grade3",
+                    "On": true,
+                    "Priority": 1,
+                    "Value": 36181769,
+                    "Engineering": {
+                        "BlueprintName": "armour_heavyduty",
+                        "Level": 5,
+                        "Quality": 1,
+                        "ExperimentalEffect": "special_armour_chunky"
+                    }
+                }
+            ]
+        }
+    }
+]

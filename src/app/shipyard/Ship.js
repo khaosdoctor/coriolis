@@ -86,18 +86,42 @@ export default class Ship {
     for (let p in properties) { this[p] = properties[p]; }  // Copy all base properties from shipData
 
     for (let slotType in slots) {   // Initialize all slots
+      // small counter to keep track of the slot indexes
+      const slotCounter = new Map();
+      // Initialize all slots
       let slotGroup = slots[slotType];
-      let group = this[slotType] = [];   // Initialize Slot group (Standard, Hardpoints, Internal)
+
+      let group = (this[slotType] = []); // Initialize Slot group (Standard, Hardpoints, Internal)
       for (let slot of slotGroup) {
-        if (typeof slot == 'object') {
-          group.push({ m: null, incCost: true, maxClass: slot.class, eligible: slot.eligible });
+        // utility mounts are a type of hardpoints and need to be different to be able to export as SLEF
+        const isUtility = slotType === "hardpoints" && slot === 0;
+        let currentSlotType = isUtility ? "utility" : slotType;
+        // set the utility index if there is none
+        if (!slotCounter.has(currentSlotType))
+          slotCounter.set(currentSlotType, []);
+
+        // account for the slot
+        slotCounter.get(currentSlotType).push(slot);
+
+        if (typeof slot == "object") {
+          group.push({
+            m: null,
+            incCost: true,
+            slotIndex: slotCounter.get(currentSlotType).length,
+            maxClass: slot.class,
+            eligible: slot.eligible,
+          });
         } else {
-          group.push({ m: null, incCost: true, maxClass: slot });
+          group.push({
+            m: null,
+            incCost: true,
+            maxClass: slot,
+            slotIndex: slotCounter.get(currentSlotType).length,
+          });
         }
       }
     }
     // Make a Ship 'slot'/item similar to other slots
-    this.m = { incCost: true, type: 'SHIP', discountedCost: this.hullCost, m: { class: '', rating: '', name: this.name, cost: this.hullCost } };
     this.costList = this.internal.concat(this.m, this.standard, this.hardpoints, this.bulkheads);
     this.powerList = this.internal.concat(
       this.cargoHatch,

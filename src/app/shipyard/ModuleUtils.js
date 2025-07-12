@@ -1,13 +1,12 @@
-import { ModuleNameToGroup, BulkheadNames, StandardArray } from './Constants';
-import ModuleSet from './ModuleSet';
-import Module from './Module';
-import { Ships, Modules } from 'coriolis-data/dist';
+import { ModuleNameToGroup, BulkheadNames, StandardArray } from "./Constants";
+import ModuleSet from "./ModuleSet";
+import Module from "./Module";
+import { Ships, Modules } from "coriolis-data/dist";
 
 /*
  * All functions below must return a fresh Module rather than a definition or existing module, as
  * the resultant object can be altered with modifications.
  */
-
 
 /**
  * Created a cargo hatch model

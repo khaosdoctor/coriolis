@@ -124,6 +124,18 @@ export const MountMap = {
   'Turret': 'T'
 };
 
+export const HardpointSizeToString = [
+  "Tiny",
+  "Small",
+  "Medium",
+  "Large",
+  "Huge",
+];
+
+// Convert the module rating to numbers. The initial undefined is just to avoid -1 in calculation
+// Ratings are inversed
+export const RatingToNumber = ["F", "E", "D", "C", "B", "A"];
+
 export const BulkheadNames = [
   'Lightweight Alloy',
   'Reinforced Alloy',

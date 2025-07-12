@@ -1,10 +1,8 @@
-import {
-  HardpointSizeToString,
-  RatingToNumber,
-} from "../shipyard/Constants.js";
+import { HardpointSizeToString } from "../shipyard/Constants.js";
 import {
   CORE_INTERNAL_NAME_MAPPING,
   CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING,
+  HARDPOINT_NUM_TO_CLASS,
 } from "./CompanionApiUtils.js";
 
 /**
@@ -282,7 +280,7 @@ export function toSLEF(ship, internalData) {
 function hardpointsToSLEF(acc, hardpoint, index, arr) {
   if (!hardpoint.m) return acc;
 
-  const Slot = `${HardpointSizeToString[hardpoint.maxClass]}Hardpoint${hardpoint.slotIndex}`;
+  const Slot = `${HARDPOINT_NUM_TO_CLASS[hardpoint.maxClass]}Hardpoint${hardpoint.slotIndex}`;
   acc.push({
     Slot,
     On: Boolean(hardpoint.enabled),

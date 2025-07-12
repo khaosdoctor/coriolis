@@ -249,6 +249,7 @@ export function findInternalId(groupName, clss, rating, name) {
  * @return {String}           The id of the module if found, null if not found
  */
 export function findHardpoint(groupName, clss, rating, name, mount, missile) {
+  console.log(Modules.hardpoints)
   let groups = {};
 
   if (groupName) {

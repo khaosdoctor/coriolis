@@ -10,6 +10,7 @@ import { toSLEF } from '../utils/SLEF';
 export default class ModalExport extends TranslatedComponent {
 
   static propTypes = {
+    ship: PropTypes.object,
     title: PropTypes.string,
     generator: PropTypes.func,
     data: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array])
@@ -22,7 +23,7 @@ export default class ModalExport extends TranslatedComponent {
   constructor(props) {
     super(props);
     let exportJson;
-    let exportSLEF = !props.generator && JSON.stringify(toSLEF(this.props.data))
+    let exportSLEF = !props.generator && JSON.stringify(toSLEF(this.props.ship, this.props.data))
 
     if (props.generator) {
       exportJson = 'Generating...';
@@ -54,7 +55,7 @@ export default class ModalExport extends TranslatedComponent {
     }
   }
 
-  _copySLEF () {
+  _copySLEF() {
     navigator.clipboard.writeText(this.state.exportSLEF)
   }
 
@@ -69,7 +70,6 @@ export default class ModalExport extends TranslatedComponent {
     if (this.props.description) {
       description = <div>{translate(this.props.description)}</div>;
     }
-    console.log({ description, props: this.props, context: this.context })
 
     return <div className='modal' onClick={(e) => e.stopPropagation()}>
       <h2>{translate(this.props.title || 'Export')}</h2>
@@ -80,14 +80,14 @@ export default class ModalExport extends TranslatedComponent {
         <div className='slefbox' name="slefbox">
           <input className='cb json' onClick={(e) => e.target.select()} type='text' readOnly value={this.state.exportSLEF} />
           {navigator.clipboard &&
-          <button
-            style={{width: '16px'}}
-            onClick={this._copySLEF.bind(this)}
-            onMouseEnter={this.context.termtip.bind(null, translate('copy') + ' SLEF')}
-            onMouseLeave={this.context.tooltip.bind(null, null)}
-          >
-            <Copy className="icon lg" />
-          </button>
+            <button
+              style={{ width: '16px' }}
+              onClick={this._copySLEF.bind(this)}
+              onMouseEnter={this.context.termtip.bind(null, translate('copy') + ' SLEF')}
+              onMouseLeave={this.context.tooltip.bind(null, null)}
+            >
+              <Copy className="icon lg" />
+            </button>
           }
         </div>
       </div>

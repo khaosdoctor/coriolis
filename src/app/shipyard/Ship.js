@@ -122,6 +122,7 @@ export default class Ship {
       }
     }
     // Make a Ship 'slot'/item similar to other slots
+    this.m = { incCost: true, type: 'SHIP', discountedCost: this.hullCost, m: { class: '', rating: '', name: this.name, cost: this.hullCost } };
     this.costList = this.internal.concat(this.m, this.standard, this.hardpoints, this.bulkheads);
     this.powerList = this.internal.concat(
       this.cargoHatch,

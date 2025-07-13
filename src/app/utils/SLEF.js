@@ -11,7 +11,6 @@ import {
  * @param {Object} internalData Internal JSON data
  */
 export function toSLEF(ship, internalData) {
-  console.log({ ship });
   const dataReference = internalData.references[0];
   const fdShipName = Object.entries(SHIP_FD_NAME_TO_CORIOLIS_NAME).find(
     ([_, coriolisName]) => coriolisName === ship.id,

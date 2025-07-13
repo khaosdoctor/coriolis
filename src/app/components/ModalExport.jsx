@@ -77,7 +77,7 @@ export default class ModalExport extends TranslatedComponent {
       <div>
         <textarea className='cb json' onClick={(e) => e.target.select()} ref={node => this.exportField = node} readOnly value={this.state.exportJson} />
         <label style={{ margin: 0 }}>SLEF:</label>
-        <div className='slefbox' name="slefbox">
+        <div className='slefbox'>
           <input className='cb json' onClick={(e) => e.target.select()} type='text' readOnly value={this.state.exportSLEF} />
           {navigator.clipboard &&
             <button

@@ -108,7 +108,6 @@ export default class Ship {
             m: null,
             incCost: true,
             slotIndex: slotCounter.get(currentSlotType).length,
-            isUtilityMount: isUtility,
             maxClass: slot.class,
             eligible: slot.eligible,
           });
@@ -117,7 +116,8 @@ export default class Ship {
             m: null,
             incCost: true,
             maxClass: slot,
-            isUtilityMount: isUtility,
+            // Add helper if it's a hardpoint
+            ...(slotType === 'hardpoints' ? {isUtilityMount: isUtility} : {}),
             slotIndex: slotCounter.get(currentSlotType).length,
           });
         }

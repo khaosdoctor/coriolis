@@ -272,6 +272,7 @@ export function toSLEF(ship, internalData) {
       },
     },
   ];
+  return slef
 }
 
 /**

@@ -3,6 +3,7 @@ import {
   CORE_INTERNAL_NAME_MAPPING,
   CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING,
   HARDPOINT_NUM_TO_CLASS,
+  SHIP_FD_NAME_TO_CORIOLIS_NAME,
 } from "./CompanionApiUtils.js";
 
 /**
@@ -224,6 +225,9 @@ import {
 export function toSLEF(ship, internalData) {
   console.log(`toSLEF`, { internalData, ship });
   const dataReference = internalData.references[0];
+  const fdShipName = Object.entries(SHIP_FD_NAME_TO_CORIOLIS_NAME).find(
+    ([_, coriolisName]) => coriolisName === ship.id,
+  )[0];
 
   const slef = [
     {
@@ -237,9 +241,9 @@ export function toSLEF(ship, internalData) {
         },
       },
       data: {
-        Ship: ship.id,
+        Ship: fdShipName,
         HullValue: ship.m.discountedCost,
-        ModulesValue: ship.totalCost,
+        ModulesValue: ship.totalCost - ship.m.discountedCost,
         UnladenMass: ship.unladenMass,
         CargoCapacity: ship.cargoCapacity,
         FuelCapacity: {
@@ -257,14 +261,14 @@ export function toSLEF(ship, internalData) {
           {
             Slot: CORE_INTERNAL_NAME_MAPPING.coriolisToFD.bulkheads,
             On: true,
-            Item: `${ship.id}_${CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING[ship.bulkheads.m.name]}`,
+            Item: `${fdShipName}_${CORIOLIS_TO_FD_BULKHEAD_NAME_MAPPING[ship.bulkheads.m.name]}`,
             Priority: 0,
             Value: ship.bulkheads.discountedCost,
             Engineering: engineeringFromBlueprint(ship.bulkheads.m.blueprint),
           },
           ...ship.standard.map(coreInternalToSLEF),
           ...ship.hardpoints.reduce(hardpointsToSLEF, []),
-          ...ship.internal.map(optionalInternalToSLEF),
+          ...ship.internal.reduce(optionalInternalToSLEF, []),
         ],
       },
     },
@@ -277,7 +281,7 @@ export function toSLEF(ship, internalData) {
  * Converts an internal representation of one hardpoint to SLEF
  * @param {HardpointComponent} hardpoint Single hardpoint
  */
-function hardpointsToSLEF(acc, hardpoint, index, arr) {
+function hardpointsToSLEF(acc, hardpoint) {
   if (!hardpoint.m) return acc;
 
   const Slot = `${HARDPOINT_NUM_TO_CLASS[hardpoint.maxClass]}Hardpoint${hardpoint.slotIndex}`;
@@ -315,7 +319,19 @@ function coreInternalToSLEF(coreInternal) {
  * Converts an internal representation of one optional internal to SLEF
  * @param {InternalComponent} optionalInternal Optional internal component
  */
-function optionalInternalToSLEF(optionalInternal) {}
+function optionalInternalToSLEF(acc, optionalInternal) {
+  if (!optionalInternal.m) return acc;
+
+  acc.push({
+    Slot: `Slot${optionalInternal.slotIndex.toString().padStart(2, 0)}_Size${optionalInternal.maxClass}`,
+    Item: optionalInternal.m.symbol,
+    On: Boolean(optionalInternal.enabled),
+    Priority: optionalInternal.priority,
+    Value: optionalInternal.discountedCost,
+    Engineering: engineeringFromBlueprint(optionalInternal.m.blueprint),
+  });
+  return acc;
+}
 
 /**
  * Converts an internal representation of one utility mount to SLEF

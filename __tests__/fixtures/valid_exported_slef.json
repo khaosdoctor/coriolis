@@ -1,0 +1,332 @@
+[
+  {
+    "header": {
+      "appName": "Coriolis.io",
+      "appVersion": "1.0",
+      "appURL": "https://coriolis.io/outfit/federal_corvette?code=A2pvtsFklmdxsuf57r1p-2h2a-b0-00-01-4A-0d4o0502013w--5i1K-0i--4C.Iw18ZXEA.Aw18ZXEA.H4sIAAAAAAAAA21RO0sDYRDcJHfnI%2BrpZx4XIT5IIF04LEXFSkQsBB%2B1WKQSCYIgIlaClsHKMqVlSkt%2Fgj%2FA4kpBkSgiQZJdZ0%2FzFeIVw93O7OzsHrFHRD0H0L0GpBv4Hq2zyETTJTIHryLlFmhJ8LIqU6o8BwxGXRF%2FZYYoN4uiiUVJzqsoqaIjgH81CeoJfCnsiEiKp5R3lT9VvvwlYu7SRJmzLFHwCEYcnu%2BL%2FPAY%2FTcLqLq81J%2FvR1VUL%2FAaxK4e7%2FenBg8DRFVNVdB8MsQ7NjWmEDUQwFEwTR9yTV287UGZ5l0bHVHIU2t%2F7QP59AhBoHYjP3Zx%2FprajVdgp2Dq%2Bd%2FpxVg5xlv2sBmAq5S3%2FQ6n9ptIqfUMkeHhfzbNcc1WT15ECoufIuF9hIY8b9j5h8orZVSU0SWyer9grw3lNK%2FbxS8BiSaU8bnjkBX9Z6WOXm%2BOU%2Fawm6vo101E6M%2FzDYTSApEqAgAA&bn=Imported%20Federal%20Corvette",
+      "appCustomProperties": {
+        "name": "Coriolis.io",
+        "url": "https://coriolis.io/outfit/federal_corvette?code=A2pvtsFklmdxsuf57r1p-2h2a-b0-00-01-4A-0d4o0502013w--5i1K-0i--4C.Iw18ZXEA.Aw18ZXEA.H4sIAAAAAAAAA21RO0sDYRDcJHfnI%2BrpZx4XIT5IIF04LEXFSkQsBB%2B1WKQSCYIgIlaClsHKMqVlSkt%2Fgj%2FA4kpBkSgiQZJdZ0%2FzFeIVw93O7OzsHrFHRD0H0L0GpBv4Hq2zyETTJTIHryLlFmhJ8LIqU6o8BwxGXRF%2FZYYoN4uiiUVJzqsoqaIjgH81CeoJfCnsiEiKp5R3lT9VvvwlYu7SRJmzLFHwCEYcnu%2BL%2FPAY%2FTcLqLq81J%2FvR1VUL%2FAaxK4e7%2FenBg8DRFVNVdB8MsQ7NjWmEDUQwFEwTR9yTV287UGZ5l0bHVHIU2t%2F7QP59AhBoHYjP3Zx%2FprajVdgp2Dq%2Bd%2FpxVg5xlv2sBmAq5S3%2FQ6n9ptIqfUMkeHhfzbNcc1WT15ECoufIuF9hIY8b9j5h8orZVSU0SWyer9grw3lNK%2FbxS8BiSaU8bnjkBX9Z6WOXm%2BOU%2Fawm6vo101E6M%2FzDYTSApEqAgAA&bn=Imported%20Federal%20Corvette",
+        "code": "A2pvtsFklmdxsuf57r1p-2h2a-b0-00-01-4A-0d4o0502013w--5i1K-0i--4C.Iw18ZXEA.Aw18ZXEA.H4sIAAAAAAAAA21RO0sDYRDcJHfnI+rpZx4XIT5IIF04LEXFSkQsBB+1WKQSCYIgIlaClsHKMqVlSkt/gj/A4kpBkSgiQZJdZ0/zFeIVw93O7OzsHrFHRD0H0L0GpBv4Hq2zyETTJTIHryLlFmhJ8LIqU6o8BwxGXRF/ZYYoN4uiiUVJzqsoqaIjgH81CeoJfCnsiEiKp5R3lT9VvvwlYu7SRJmzLFHwCEYcnu+L/PAY/TcLqLq81J/vR1VUL/AaxK4e7/enBg8DRFVNVdB8MsQ7NjWmEDUQwFEwTR9yTV287UGZ5l0bHVHIU2t/7QP59AhBoHYjP3Zx/prajVdgp2Dq+d/pxVg5xlv2sBmAq5S3/Q6n9ptIqfUMkeHhfzbNcc1WT15ECoufIuF9hIY8b9j5h8orZVSU0SWyer9grw3lNK/bxS8BiSaU8bnjkBX9Z6WOXm+OU/awm6vo101E6M/zDYTSApEqAgAA",
+        "shipId": "federal_corvette",
+        "shipName": "Imported Federal Corvette"
+      }
+    },
+    "data": {
+      "Ship": "Federation_Corvette",
+      "HullValue": 183156068,
+      "ModulesValue": 277860888,
+      "UnladenMass": 1557.25,
+      "CargoCapacity": 76,
+      "FuelCapacity": {
+        "Main": 32,
+        "Reserve": 1.13
+      },
+      "Modules": [
+        {
+          "Slot": "CargoHatch",
+          "On": true,
+          "Item": "modularcargobaydoor",
+          "Priority": 0,
+          "Value": 0
+        },
+        {
+          "Slot": "Armour",
+          "On": true,
+          "Item": "Federation_Corvette_armour_grade3",
+          "Priority": 0,
+          "Value": 169172505,
+          "Engineering": {
+            "BlueprintName": "Armour_Advanced",
+            "Level": 4,
+            "Quality": 1,
+            "ExperimentalEffect": "special_armour_chunky"
+          }
+        },
+        {
+          "Slot": "PowerPlant",
+          "On": true,
+          "Item": "Int_Powerplant_Size8_Class4",
+          "Priority": 0,
+          "Value": 38913291,
+          "Engineering": {
+            "BlueprintName": "PowerPlant_Armoured",
+            "Level": 3,
+            "Quality": 1,
+            "ExperimentalEffect": "special_powerplant_toughened"
+          }
+        },
+        {
+          "Slot": "MainEngines",
+          "On": true,
+          "Item": "Int_Engine_Size7_Class2",
+          "Priority": 0,
+          "Value": 1899597,
+          "Engineering": {
+            "BlueprintName": "Engine_Reinforced",
+            "Level": 2,
+            "Quality": 1,
+            "ExperimentalEffect": "special_engine_cooled"
+          }
+        },
+        {
+          "Slot": "FrameShiftDrive",
+          "On": true,
+          "Item": "Int_Hyperdrive_Size6_Class5",
+          "Priority": 0,
+          "Value": 16179531,
+          "Engineering": {
+            "BlueprintName": "FSD_LongRange",
+            "Level": 5,
+            "Quality": 1,
+            "ExperimentalEffect": "special_fsd_lightweight"
+          }
+        },
+        {
+          "Slot": "LifeSupport",
+          "On": true,
+          "Item": "Int_LifeSupport_Size5_Class3",
+          "Priority": 0,
+          "Value": 198611,
+          "Engineering": {
+            "BlueprintName": "LifeSupport_Reinforced",
+            "Level": 5,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "PowerDistributor",
+          "On": true,
+          "Item": "Int_PowerDistributor_Size7_Class2",
+          "Priority": 0,
+          "Value": 622843,
+          "Engineering": {
+            "BlueprintName": "PowerDistributor_Shielded",
+            "Level": 3,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Radar",
+          "On": true,
+          "Item": "Int_Sensors_Size8_Class5",
+          "Priority": 0,
+          "Value": 27249391,
+          "Engineering": {
+            "BlueprintName": "Sensor_WideAngle",
+            "Level": 2,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "FuelTank",
+          "On": true,
+          "Item": "Int_FuelTank_Size5_Class3",
+          "Priority": 0,
+          "Value": 97754,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "HugeHardpoint1",
+          "On": true,
+          "Item": "Hpt_PulseLaser_Gimbal_Huge",
+          "Priority": 0,
+          "Value": 877600,
+          "Engineering": {}
+        },
+        {
+          "Slot": "HugeHardpoint2",
+          "On": true,
+          "Item": "Hpt_Cannon_Turret_Large",
+          "Priority": 0,
+          "Value": 16204800,
+          "Engineering": {
+            "BlueprintName": "Weapon_HighCapacity",
+            "Level": 3,
+            "Quality": 1,
+            "ExperimentalEffect": "special_high_yield_shell"
+          }
+        },
+        {
+          "Slot": "MediumHardpoint4",
+          "On": true,
+          "Item": "Hpt_AdvancedTorpPylon_Fixed_Small",
+          "Priority": 0,
+          "Value": 11200,
+          "Engineering": {
+            "BlueprintName": "Weapon_LightWeight",
+            "Level": 2,
+            "Quality": 1,
+            "ExperimentalEffect": "special_reverberating_cascade"
+          }
+        },
+        {
+          "Slot": "MediumHardpoint5",
+          "On": true,
+          "Item": "Hpt_Railgun_Fixed_Medium",
+          "Priority": 0,
+          "Value": 412800,
+          "Engineering": {
+            "BlueprintName": "Weapon_HighCapacity",
+            "Level": 5,
+            "Quality": 1,
+            "ExperimentalEffect": "special_plasma_slug_cooled"
+          }
+        },
+        {
+          "Slot": "SmallHardpoint7",
+          "On": true,
+          "Item": "Hpt_BeamLaser_Fixed_Small_Heat",
+          "Priority": 0,
+          "Value": 56150,
+          "Engineering": {
+            "BlueprintName": "Weapon_Efficient",
+            "Level": 4,
+            "Quality": 1,
+            "ExperimentalEffect": "special_regeneration_sequence"
+          }
+        },
+        {
+          "Slot": "TinyHardpoint2",
+          "On": true,
+          "Item": "Hpt_ChaffLauncher_Tiny",
+          "Priority": 0,
+          "Value": 8500,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "TinyHardpoint4",
+          "On": true,
+          "Item": "Hpt_ElectronicCountermeasure_Tiny",
+          "Priority": 0,
+          "Value": 12500,
+          "Engineering": {
+            "BlueprintName": "Misc_Reinforced",
+            "Level": 5,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "TinyHardpoint6",
+          "On": true,
+          "Item": "Hpt_CausticSinkLauncher_Turret_Tiny",
+          "Priority": 0,
+          "Value": 50000,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "TinyHardpoint8",
+          "On": true,
+          "Item": "Hpt_CargoScanner_Size0_Class1",
+          "Priority": 0,
+          "Value": 13544,
+          "Engineering": {
+            "BlueprintName": "Sensor_FastScan",
+            "Level": 5,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot01_Size7",
+          "Item": "Int_ShieldGenerator_Size7_Class1",
+          "On": true,
+          "Priority": 0,
+          "Value": 633199,
+          "Engineering": {
+            "BlueprintName": "ShieldGenerator_Optimised",
+            "Level": 5,
+            "Quality": 1,
+            "ExperimentalEffect": "special_shield_thermic"
+          }
+        },
+        {
+          "Slot": "Slot02_Size7",
+          "Item": "Int_CargoRack_Size6_Class1",
+          "On": true,
+          "Priority": 0,
+          "Value": 362591,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot03_Size7",
+          "Item": "Int_CargoRack_Size3_Class1",
+          "On": true,
+          "Priority": 0,
+          "Value": 10563,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot04_Size6",
+          "Item": "Int_CargoRack_Size2_Class1",
+          "On": true,
+          "Priority": 0,
+          "Value": 3250,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot05_Size6",
+          "Item": "Int_SupercruiseAssist",
+          "On": true,
+          "Priority": 0,
+          "Value": 9121,
+          "Engineering": {
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot08_Size5",
+          "Item": "Int_ShieldCellBank_Size5_Class5",
+          "On": true,
+          "Priority": 0,
+          "Value": 1241317,
+          "Engineering": {
+            "BlueprintName": "ShieldCellBank_Specialised",
+            "Level": 3,
+            "Quality": 1,
+            "ExperimentalEffect": "special_shieldcell_efficient"
+          }
+        },
+        {
+          "Slot": "Slot09_Size5",
+          "Item": "Int_GuardianShieldReinforcement_Size5_Class2",
+          "On": true,
+          "Priority": 0,
+          "Value": 995330,
+          "Engineering": {}
+        },
+        {
+          "Slot": "Slot11_Size4",
+          "Item": "Int_Repairer_Size3_Class5",
+          "On": true,
+          "Priority": 0,
+          "Value": 2624400,
+          "Engineering": {
+            "BlueprintName": "AFM_Shielded",
+            "Level": 3,
+            "Quality": 1
+          }
+        },
+        {
+          "Slot": "Slot14_Size1",
+          "Item": "Int_PlanetApproachSuite",
+          "On": true,
+          "Priority": 0,
+          "Value": 500,
+          "Engineering": {}
+        }
+      ]
+    }
+  }
+]

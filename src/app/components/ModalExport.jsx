@@ -23,7 +23,7 @@ export default class ModalExport extends TranslatedComponent {
   constructor(props) {
     super(props);
     let exportJson;
-    let exportSLEF = (!props.generator && JSON.stringify(toSLEF(this.props.ship, this.props.data))) ?? []
+    let exportSLEF = (!props.generator ? JSON.stringify(toSLEF(this.props.ship, this.props.data)) : '') || '';
 
     if (props.generator) {
       exportJson = 'Generating...';
